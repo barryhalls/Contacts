@@ -14,12 +14,21 @@
      limitations under the License.
 -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/top"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
->
+    android:background="@drawable/dialpad_background"
+    android:orientation="horizontal">
+    <!-- Keypad section -->
+    <include
+        layout="@layout/dialpad" />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
 
     <!-- Text field above the keypad where the digits are displayed.
          It's type is set to PHONE (to put the keyboard in the right
@@ -41,17 +50,17 @@
         android:hint="@string/dialerKeyboardHintText"
      />
 
-    <!-- Horizontal row of buttons (Voicemail + DialButton + Delete.) -->
-    <include layout="@layout/dialpad_additional_buttons" />
-
-    <!-- "Dialpad chooser" UI, shown only when the user brings up the
-         Dialer while a call is already in progress.
-         When this UI is visible, the other Dialer elements
-         (the textfield and button) are hidden. -->
-    <ListView android:id="@+id/dialpadChooser"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:footerDividersEnabled="true"
-    />
+   <!-- Horizontal row of buttons (Voicemail + DialButton + Delete.) -->
+        <include
+            layout="@layout/dialpad_additional_buttons" />
+        <!-- "Dialpad chooser" UI, shown only when the user brings up the Dialer
+            while a call is already in progress. When this UI is visible, the other Dialer
+            elements (the textfield and button) are hidden. -->
+        <ListView
+            android:id="@+id/dialpadChooser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:footerDividersEnabled="true" />
+    </LinearLayout>
 
 </LinearLayout>
